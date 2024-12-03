@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const LoginContainer = styled.div`
   max-width: 400px;
@@ -32,7 +32,7 @@ export const Input = styled.input`
 
 export const Button = styled.button`
   padding: 10px;
-  background-color: #007BFF;
+  background-color: #007bff;
   color: white;
   border: none;
   border-radius: 4px;
@@ -58,7 +58,7 @@ export const LinkText = styled.p`
   font-size: 14px;
 
   a {
-    color: #007BFF;
+    color: #007bff;
     text-decoration: none;
   }
   a:hover {

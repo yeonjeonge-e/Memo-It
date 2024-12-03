@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const PostItBoardContainer = styled.div`
   display: flex;
@@ -48,7 +48,7 @@ export const PostIt = styled.div`
   width: 200px;
   height: 200px;
   padding: 40px 20px 10px;
-  background-color: #FFF978;
+  background-color: #fff978;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   position: relative;

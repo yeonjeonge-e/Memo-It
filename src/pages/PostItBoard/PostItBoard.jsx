@@ -1,20 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import { PostItBoardContainer, PostIt, PostItGrid, ActionButton, PostItControls, ColorMenu, PostItInput, Header, LogoutButton } from './PostItBoardStyle';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import {
+  PostItBoardContainer,
+  PostIt,
+  PostItGrid,
+  ActionButton,
+  PostItControls,
+  ColorMenu,
+  PostItInput,
+  Header,
+  LogoutButton,
+} from "./PostItBoardStyle";
+import { useNavigate } from "react-router-dom";
 
 // 로컬 스토리지 키 이름
-const POST_IT_KEY = 'postItData';
+const POST_IT_KEY = "postItData";
 
 const PostItBoard = () => {
   // 로컬 스토리지에서 포스트잇 불러오기
   const savedPostIts = JSON.parse(localStorage.getItem(POST_IT_KEY));
 
   // 포스트잇이 없다면 기본 포스트잇을 추가
-  const defaultPostIts = [
-    { id: 1, color: '#FFF978', text: '' }
-  ];
+  const defaultPostIts = [{ id: 1, color: "#FFF978", text: "" }];
 
-  const [postIts, setPostIts] = useState(savedPostIts?.length ? savedPostIts : defaultPostIts);
+  const [postIts, setPostIts] = useState(
+    savedPostIts?.length ? savedPostIts : defaultPostIts
+  );
   const [selectedPostIt, setSelectedPostIt] = useState(null);
   const navigate = useNavigate();
 
@@ -26,8 +36,8 @@ const PostItBoard = () => {
   const handleAddPostIt = () => {
     const newPostIt = {
       id: postIts.length + 1,
-      color: '#FFF978',
-      text: '',
+      color: "#FFF978",
+      text: "",
     };
     setPostIts([...postIts, newPostIt]);
   };
@@ -37,7 +47,11 @@ const PostItBoard = () => {
   };
 
   const handleColorChange = (id, color) => {
-    setPostIts(postIts.map((postIt) => (postIt.id === id ? { ...postIt, color: color } : postIt)));
+    setPostIts(
+      postIts.map((postIt) =>
+        postIt.id === id ? { ...postIt, color: color } : postIt
+      )
+    );
     setSelectedPostIt(null);
   };
 
@@ -46,11 +60,15 @@ const PostItBoard = () => {
   };
 
   const handleTextChange = (id, text) => {
-    setPostIts(postIts.map((postIt) => (postIt.id === id ? { ...postIt, text: text } : postIt)));
+    setPostIts(
+      postIts.map((postIt) =>
+        postIt.id === id ? { ...postIt, text: text } : postIt
+      )
+    );
   };
 
   const handleLogout = () => {
-    navigate('/login', { replace: true }); 
+    navigate("/login", { replace: true });
   };
 
   return (
@@ -69,14 +87,31 @@ const PostItBoard = () => {
             />
             <PostItControls>
               <ActionButton onClick={handleAddPostIt}>➕</ActionButton>
-              <ActionButton onClick={() => toggleColorMenu(postIt.id)}>☰</ActionButton>  {/* Meatball Menu ⋮*/}
-              <ActionButton onClick={() => handleDeletePostIt(postIt.id)}>❌</ActionButton>
+              <ActionButton onClick={() => toggleColorMenu(postIt.id)}>
+                ☰
+              </ActionButton>{" "}
+              {/* Meatball Menu ⋮*/}
+              <ActionButton onClick={() => handleDeletePostIt(postIt.id)}>
+                ❌
+              </ActionButton>
               {selectedPostIt === postIt.id && (
                 <ColorMenu>
-                  <div onClick={() => handleColorChange(postIt.id, '#FFEB5A')} style={{ backgroundColor: 'yellow' }} />
-                  <div onClick={() => handleColorChange(postIt.id, '#FFD700')} style={{ backgroundColor: 'orange' }} />
-                  <div onClick={() => handleColorChange(postIt.id, '#6DD66D')} style={{ backgroundColor: 'green' }} />
-                  <div onClick={() => handleColorChange(postIt.id, '#5AD2FF')} style={{ backgroundColor: 'blue' }} />
+                  <div
+                    onClick={() => handleColorChange(postIt.id, "#FFEB5A")}
+                    style={{ backgroundColor: "yellow" }}
+                  />
+                  <div
+                    onClick={() => handleColorChange(postIt.id, "#FFD700")}
+                    style={{ backgroundColor: "orange" }}
+                  />
+                  <div
+                    onClick={() => handleColorChange(postIt.id, "#6DD66D")}
+                    style={{ backgroundColor: "green" }}
+                  />
+                  <div
+                    onClick={() => handleColorChange(postIt.id, "#5AD2FF")}
+                    style={{ backgroundColor: "blue" }}
+                  />
                 </ColorMenu>
               )}
             </PostItControls>

@@ -1,15 +1,22 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { login } from '../../../API/loginAPI';
-import { LoginContainer, Title, Form, Input, Button, LinkText } from './LoginStyle';
-import GuestLogin from '../GuestLogin/Guest';
-import { signInAnonymously, signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../../firebase';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { login } from "../../../API/loginAPI";
+import {
+  LoginContainer,
+  Title,
+  Form,
+  Input,
+  Button,
+  LinkText,
+} from "./LoginStyle";
+import GuestLogin from "../GuestLogin/Guest";
+import { signInAnonymously, signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../../firebase";
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   // 로그인 처리 함수
@@ -18,21 +25,25 @@ const Login = () => {
 
     try {
       // Firebase 이메일/비밀번호 로그인 처리
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      console.log('로그인 성공:', userCredential.user);
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      console.log("로그인 성공:", userCredential.user);
       setTimeout(() => {
-        navigate('/PostItBoard');
+        navigate("/PostItBoard");
       }, 1000);
     } catch (err) {
-      console.error('로그인 실패:', err);
-      setError('로그인 실패: ' + err.message);
+      console.error("로그인 실패:", err);
+      setError("로그인 실패: " + err.message);
     }
   };
 
   return (
     <LoginContainer>
       <Title>Login</Title>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>}
       <Form onSubmit={handleLogin}>
         <Input
           type="email"
