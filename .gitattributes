@@ -1,1 +1,8 @@
-*.mjs text eol=lf
+# 모든 텍스트 파일에 대해 LF 강제
+* text=auto eol=lf
+
+# 특정 파일 확장자에 대해 LF 강제 (선택 사항)
+*.json text eol=lf
+*.txt text eol=lf
+*.gitattributes text eol=lf
+*.gitignore text eol=lf
