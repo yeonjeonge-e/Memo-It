@@ -7,10 +7,8 @@ import {
   PostItControls,
   ColorMenu,
   PostItInput,
-  Header,
-  LogoutButton,
 } from "./PostItBoardStyle";
-import { useNavigate } from "react-router-dom";
+import Header from "../../Components/Commons/Header";
 
 // 로컬 스토리지 키 이름
 const POST_IT_KEY = "postItData";
@@ -26,7 +24,6 @@ const PostItBoard = () => {
     savedPostIts?.length ? savedPostIts : defaultPostIts
   );
   const [selectedPostIt, setSelectedPostIt] = useState(null);
-  const navigate = useNavigate();
 
   // 포스트잇 상태가 변경될 때마다 로컬 스토리지에 저장
   useEffect(() => {
@@ -67,16 +64,9 @@ const PostItBoard = () => {
     );
   };
 
-  const handleLogout = () => {
-    navigate("/login", { replace: true });
-  };
-
   return (
     <PostItBoardContainer>
-      <Header>
-        <h1>Memo-It</h1>
-        <LogoutButton onClick={handleLogout}>Logout</LogoutButton>
-      </Header>
+      <Header />
       <PostItGrid>
         {postIts.map((postIt) => (
           <PostIt key={postIt.id} style={{ backgroundColor: postIt.color }}>

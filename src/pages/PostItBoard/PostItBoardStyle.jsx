@@ -5,21 +5,7 @@ export const PostItBoardContainer = styled.div`
   flex-direction: column;
   align-items: center;
   height: 100vh;
-  background-color: #f0f0f0;
-`;
-
-export const Header = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 40%;
-  padding: 3rem;
-  padding-bottom: 1rem;
-
-  h1 {
-    font-size: 50px;
-    text-align: center;
-  }
+  background-color: #fff;
 `;
 
 export const Title = styled.h1`
@@ -38,7 +24,7 @@ export const PostItGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  background-color: #e0e0e0;
+  background-color: #f0f0f0;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);

@@ -1,0 +1,37 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": ["react-app", "eslint:recommended", "airbnb", "prettier"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "rules": {
+    "no-var": "error",
+    "no-multiple-empty-lines": "error",
+    "no-console": ["warn", { "allow": ["warn", "error", "info"] }], // console.log 허용하지 않고 warn/error/info만 허용
+    "eqeqeq": "error",
+    "dot-notation": "error",
+    "no-unused-vars": ["warn"], // 사용하지 않는 변수는 경고로만 표시
+    "react/jsx-filename-extension": [
+      "warn",
+      { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
+    ], // 모든 파일 확장자에서 JSX 허용
+    "react/react-in-jsx-scope": "off", // React 17+ 환경에서도 React import 강요하지 않음
+    "import/extensions": ["off"], // import 시 확장자 검사를 비활성화
+    "react/function-component-definition": "off" // function 또는 const 모두 허용
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  }
+}
