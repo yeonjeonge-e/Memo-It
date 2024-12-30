@@ -36,6 +36,7 @@ const SignUp = () => {
       console.log("회원가입 성공:", userCredential.user);
 
       setSuccess("회원가입이 성공적으로 완료되었습니다!");
+      setError("");
 
       // 일정 시간 후 로그인 페이지로 이동
       setTimeout(() => {
@@ -45,6 +46,12 @@ const SignUp = () => {
       console.error("회원가입 에러:", err);
       setError(err.message || "회원가입 실패");
     }
+  };
+
+  // 입력 변경 시 오류 메시지 초기화
+  const handleInputChange = (setter) => (e) => {
+    setter(e.target.value);
+    setError(""); // 입력 변경 시 오류 메시지 제거
   };
 
   return (
@@ -57,19 +64,19 @@ const SignUp = () => {
           type="email"
           placeholder="이메일"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={handleInputChange(setEmail)}
         />
         <Input
           type="password"
           placeholder="비밀번호"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={handleInputChange(setPassword)}
         />
         <Input
           type="password"
           placeholder="비밀번호 확인"
           value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
+          onChange={handleInputChange(setConfirmPassword)}
         />
         <Button type="submit">회원가입</Button>
       </Form>

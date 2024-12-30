@@ -10,7 +10,7 @@ import {
   LinkText,
 } from "./LoginStyle";
 import GuestLogin from "../GuestLogin/Guest";
-import { signInAnonymously, signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../firebase";
 
 const Login = () => {
